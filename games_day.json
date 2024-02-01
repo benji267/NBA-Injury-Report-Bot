@@ -1,0 +1,98 @@
+[
+  {
+    "@context": "http://www.schema.org",
+    "@type": "SportsEvent",
+    "competitor": [
+      {
+        "@type": "SportsTeam",
+        "name": "Los Angeles Lakers"
+      },
+      {
+        "@type": "SportsTeam",
+        "name": "Boston Celtics"
+      }
+    ],
+    "description": "Boston Celtics vs Los Angeles Lakers on Thu, Feb 1, 2024",
+    "endDate": "",
+    "name": "Los Angeles Lakers @ Boston Celtics",
+    "sport": "Basketball",
+    "startDate": "Thu, Feb 1, 2024",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "location": {
+      "@type": "Place",
+      "name": "TD Garden"
+    }
+  },
+  {
+    "@context": "http://www.schema.org",
+    "@type": "SportsEvent",
+    "competitor": [
+      {
+        "@type": "SportsTeam",
+        "name": "Indiana Pacers"
+      },
+      {
+        "@type": "SportsTeam",
+        "name": "New York Knicks"
+      }
+    ],
+    "description": "New York Knicks vs Indiana Pacers on Thu, Feb 1, 2024",
+    "endDate": "",
+    "name": "Indiana Pacers @ New York Knicks",
+    "sport": "Basketball",
+    "startDate": "Thu, Feb 1, 2024",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "location": {
+      "@type": "Place",
+      "name": "Madison Square Garden (IV)"
+    }
+  },
+  {
+    "@context": "http://www.schema.org",
+    "@type": "SportsEvent",
+    "competitor": [
+      {
+        "@type": "SportsTeam",
+        "name": "Cleveland Cavaliers"
+      },
+      {
+        "@type": "SportsTeam",
+        "name": "Memphis Grizzlies"
+      }
+    ],
+    "description": "Memphis Grizzlies vs Cleveland Cavaliers on Thu, Feb 1, 2024",
+    "endDate": "",
+    "name": "Cleveland Cavaliers @ Memphis Grizzlies",
+    "sport": "Basketball",
+    "startDate": "Thu, Feb 1, 2024",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "location": {
+      "@type": "Place",
+      "name": "FedEx Forum"
+    }
+  },
+  {
+    "@context": "http://www.schema.org",
+    "@type": "SportsEvent",
+    "competitor": [
+      {
+        "@type": "SportsTeam",
+        "name": "Philadelphia 76ers"
+      },
+      {
+        "@type": "SportsTeam",
+        "name": "Utah Jazz"
+      }
+    ],
+    "description": "Utah Jazz vs Philadelphia 76ers on Thu, Feb 1, 2024",
+    "endDate": "",
+    "name": "Philadelphia 76ers @ Utah Jazz",
+    "sport": "Basketball",
+    "startDate": "Thu, Feb 1, 2024",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "location": {
+      "@type": "Place",
+      "name": "Delta Center"
+    }
+  }
+]

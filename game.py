@@ -73,14 +73,17 @@ def game_day_html_to_json():
         return
 
     # Récupérer le jour courant en format 'Mon, Jan 1, 2024'
-    today = datetime.datetime.now().strftime("%a, %b %d, %Y")
-
+    today = datetime.datetime.now().strftime("%a, %b %-d, %Y")
+    
     # Filtrer les matchs du jour
     games_today = [game for game in all_games_data if game.get('startDate') == today]
 
     # Enregistrer les matchs du jour dans un nouveau fichier games_day.json
     with open('games_day.json', 'w', encoding='utf-8') as games_day_file:
         json.dump(games_today, games_day_file, indent=2, ensure_ascii=False)
+
+
+game_day_html_to_json()
 
 
 

@@ -6,8 +6,19 @@ from datetime import datetime, timedelta
 import main
 from game import hour_first_game_of_day
 import json
+import os
+from dotenv import load_dotenv
 
-new_hour = None
+load_dotenv()
+
+
+bot_token = os.getenv("BOT_TOKEN")
+channel_test_id = os.getenv("CHANNEL_TEST_ID")
+channel_id=os.getenv("CHANNEL_ID")
+
+
+
+send_hour = None
 
 bot = Client(intents=Intents.DEFAULT)
 
@@ -99,12 +110,11 @@ async def send_formatted_list(channel, title, player_list):
 
 @listen()
 async def on_startup():
-    global new_hour
+    global send_hour
     print("Connected!")
-    channel_id = 1197550128559566848
-    #channel_id = 1197326468162793625
+    
     try:
-        channel = await bot.fetch_channel(channel_id)  
+        channel = await bot.fetch_channel(channel_test_id)  
     except:
         print("Channel not found")
     """if channel:
@@ -116,19 +126,19 @@ async def on_startup():
     while True:
         date=datetime.now()
         heure_formattee = date.strftime("%H:%M:%S")
-        if heure_formattee== "11:11:25":
+        if heure_formattee== "15:00:00":
             main.main()
             first_game=hour_first_game_of_day()
             current_time = datetime.strptime(first_game, "%H:%M:%S")
 
             new_time = current_time + timedelta(hours=5)
 
-            new_hour = new_time.strftime("%H:%M:%S")
+            send_hour = new_time.strftime("%H:%M:%S")
 
-            if(new_hour[0]=='0'):
-                new_hour="23:00:00"
+            if(send_hour[0]=='0'):
+                send_hour="23:00:00"
 
-        if heure_formattee==new_hour:
+        if heure_formattee==send_hour:
             list_out=main.list_player_out
             list_probable=main.list_player_probable
             list_questionable=main.list_player_questionable
@@ -201,4 +211,4 @@ async def on_startup():
 
 if __name__ == "__main__":
     print("Starting bot...")
-    bot.start("MTE5NzU3MDI2NDEwODYzODI3OA.GRic7z.guYc_KWKR42754tfFav_7b0gVrSeKfEJPd5Vj4")
+    bot.start(bot_token)
