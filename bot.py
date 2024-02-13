@@ -137,6 +137,7 @@ async def on_startup():
                 send_hour="23:00:00"
 
         if heure_formattee==send_hour:
+            main.main()
             list_out=main.list_player_out
             list_probable=main.list_player_probable
             list_questionable=main.list_player_questionable
