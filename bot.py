@@ -85,7 +85,6 @@ async def send_formatted_list(channel, title, player_list):
         await channel.send(f"**{title}**: None")
         return
 
-    # Créer une liste de messages à envoyer
     messages_to_send = []
     current_message = f"**{title}**\n"
     
@@ -97,7 +96,6 @@ async def send_formatted_list(channel, title, player_list):
 
         current_message += f"- {player}\n"
 
-    # Ajouter le dernier morceau s'il en reste
     if current_message.strip() != "":
         messages_to_send.append(current_message)
 
@@ -114,7 +112,7 @@ async def on_startup():
     print("Connected!")
     
     try:
-        channel = await bot.fetch_channel(channel_test_id)  
+        channel = await bot.fetch_channel(channel_id)  
     except:
         print("Channel not found")
     """if channel:
@@ -145,7 +143,7 @@ async def on_startup():
             list_player_doubtful=main.list_player_doubtful
             list_note=main.list_player_note
 
-            #boucle parcourant games_day.json et qui affiche la balise Name de chaque match
+            # boucle parcourant games_day.json et qui affiche la balise Name de chaque match
             with open('games_day.json', 'r', encoding='utf-8') as json_file:
                 game_data = json.load(json_file)
 

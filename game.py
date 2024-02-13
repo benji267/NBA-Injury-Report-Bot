@@ -16,10 +16,8 @@ def game_html_to_json():
 
     # Vérifier si la requête a réussi (code de statut 200)
     if response.status_code == 200:
-        # Utiliser BeautifulSoup pour analyser la page HTML
         soup = BeautifulSoup(response.text, 'html.parser')
 
-        # Rechercher le script contenant le JSON
         script_tag = soup.find('script', {'type': 'application/ld+json'})
     
         # Extraire le contenu JSON du script
@@ -41,12 +39,9 @@ def hour_first_game_of_day():
 
     response = requests.get(url)
 
-    # Vérifier si la requête a réussi (code de statut 200)
     if response.status_code == 200:
-        # Charger le JSON depuis la réponse
         json_data = json.loads(response.text)
 
-        # Vérifier si la liste de jeux est non vide
         if json_data and len(json_data) > 0:
             # Extraire la valeur de la clé "DateTime" du premier jeu
             first_game_datetime = json_data[0].get("DateTime")

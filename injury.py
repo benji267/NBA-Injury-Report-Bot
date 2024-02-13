@@ -13,15 +13,11 @@ def injury_html_to_json():
     # Faire une requête GET à l'URL
     response = requests.get(url)
 
-    # Vérifier si la requête a réussi (code de statut 200)
     if response.status_code == 200:
-        # Utiliser BeautifulSoup pour analyser la page HTML
         soup = BeautifulSoup(response.text, 'html.parser')
 
-        # Sélectionner toutes les lignes (tr) dans le tableau (tbody)
         rows = soup.select('tbody tr')
 
-        # Créer une liste pour stocker les données des joueurs blessés
         player_injuries = []
 
         # Parcourir chaque ligne et extraire les informations nécessaires
@@ -31,7 +27,6 @@ def injury_html_to_json():
             date_update = row.select_one('[data-stat="date_update"]').text
             injury_note = row.select_one('[data-stat="note"]').text
 
-            # Ajouter les données dans la liste
             player_injury_data = {
                 "Player": player_name,
                 "Team": team_name,
@@ -40,10 +35,8 @@ def injury_html_to_json():
             }
             player_injuries.append(player_injury_data)
 
-        # Convertir la liste en format JSON
         player_injuries_json = json.dumps(player_injuries, indent=2, ensure_ascii=False)
 
-        # Écrire le JSON dans un fichier
         with open('player_injury.json', 'w', encoding='utf-8') as json_file:
             json_file.write(player_injuries_json)
 
