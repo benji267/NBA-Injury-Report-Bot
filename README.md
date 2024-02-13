@@ -10,4 +10,4 @@ To launch the bot you just need to run the 'bot.py' file like this:
 python3 bot.py
 ```
 
-The bot will then be up and running and will be able to provide injury reports 1 hour before the first game of each night.
+The bot will create JSON files with the data and fill  the list of injuries. Afterward, it will be up and running and will be able to provide injury reports 1 hour before the first game of each night.
