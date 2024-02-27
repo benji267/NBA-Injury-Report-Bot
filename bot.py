@@ -89,7 +89,7 @@ async def send_formatted_list(channel, title, player_list):
     current_message = f"**{title}**\n"
     
     for player in player_list:
-        # Vérifier si le message actuel atteint la limite de caractères
+        # Check if the current message is too long
         if len(current_message) + len(f"- {player}\n") > 2000:
             messages_to_send.append(current_message)
             current_message = f"**{title}** (suite):\n"
@@ -99,7 +99,6 @@ async def send_formatted_list(channel, title, player_list):
     if current_message.strip() != "":
         messages_to_send.append(current_message)
 
-    # Envoyer les messages
     for message in messages_to_send:
         embed = Embed(description=message)
         await channel.send(embed=embed)
@@ -117,9 +116,7 @@ async def on_startup():
         print("Channel not found")
     """if channel:
         await channel.send("Hello, World!")"""
-    
-    #fonction de test envoyant un message toutes les 10 secondes
-    #send_message_periodically.start() 
+   
 
     while True:
         date=datetime.now()
@@ -135,15 +132,16 @@ async def on_startup():
 
             if(send_hour[0]=='0'):
                 send_hour="23:00:00"
+            
+
+        if heure_formattee==send_hour:
+            main.main()
             list_out=main.list_player_out
             list_probable=main.list_player_probable
             list_questionable=main.list_player_questionable
             list_player_doubtful=main.list_player_doubtful
             list_note=main.list_player_note
 
-        if heure_formattee==send_hour:
-
-            # boucle parcourant games_day.json et qui affiche la balise Name de chaque match
             with open('games_day.json', 'r', encoding='utf-8') as json_file:
                 game_data = json.load(json_file)
 

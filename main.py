@@ -10,6 +10,7 @@ list_player_probable=[]
 list_player_doubtful=[]
 list_player_note=[]
 
+# Extract the injuries from the JSON file and put them in the corresponding list
 def extract_out_players():
     global list_player_out
     global list_player_questionable

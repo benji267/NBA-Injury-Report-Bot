@@ -6,8 +6,8 @@ import datetime
 
 
 
+# Create a JSON file with all the injuries of the current month
 def injury_html_to_json():
-    # URL de la page HTML contenant les informations sur les blessures
     url = "https://www.basketball-reference.com/friv/injuries.fcgi"
 
     # Faire une requête GET à l'URL
@@ -43,6 +43,8 @@ def injury_html_to_json():
     else:
         print(f"Échec de la requête. Code de statut : {response.status_code}")
 
+
+# Isolate the injuries of a specific team
 def isolate_team_injury(team):
     injury_html_to_json()
     try:

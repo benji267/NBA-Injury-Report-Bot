@@ -5,7 +5,7 @@ import datetime
 
 
 
-
+# Create a JSON file with all the games of the current month
 def game_html_to_json():
 
     now = datetime.datetime.now()
@@ -14,13 +14,11 @@ def game_html_to_json():
 
     response = requests.get(url)
 
-    # Vérifier si la requête a réussi (code de statut 200)
     if response.status_code == 200:
         soup = BeautifulSoup(response.text, 'html.parser')
 
         script_tag = soup.find('script', {'type': 'application/ld+json'})
     
-        # Extraire le contenu JSON du script
         if script_tag:
             json_data = json.loads(script_tag.string)
             open('all_games.json', 'w', encoding='utf-8').write(json.dumps(json_data, indent=2, ensure_ascii=False))
@@ -32,6 +30,8 @@ def game_html_to_json():
     else:
         print(f"Échec de la requête. Code de statut : {response.status_code}")
 
+
+# Get the hour of the first game of the day
 def hour_first_game_of_day():
     date = datetime.datetime.now()
     date_formatted = date.strftime("%Y-%m-%d")
@@ -43,10 +43,9 @@ def hour_first_game_of_day():
         json_data = json.loads(response.text)
 
         if json_data and len(json_data) > 0:
-            # Extraire la valeur de la clé "DateTime" du premier jeu
+
             first_game_datetime = json_data[0].get("DateTime")
 
-            # Vérifier si la clé "DateTime" existe dans le premier jeu
             if first_game_datetime:
                 first_hour=first_game_datetime.split('T')[1]
             else:
@@ -67,13 +66,11 @@ def game_day_html_to_json():
         print("Fichier all_games.json non trouvé.")
         return
 
-    # Récupérer le jour courant en format 'Mon, Jan 1, 2024'
+    # Get the current date in the format "Mon, Jan 1, 2022"
     today = datetime.datetime.now().strftime("%a, %b %-d, %Y")
     
-    # Filtrer les matchs du jour
     games_today = [game for game in all_games_data if game.get('startDate') == today]
 
-    # Enregistrer les matchs du jour dans un nouveau fichier games_day.json
     with open('games_day.json', 'w', encoding='utf-8') as games_day_file:
         json.dump(games_today, games_day_file, indent=2, ensure_ascii=False)
 
